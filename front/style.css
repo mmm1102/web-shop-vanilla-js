@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 20px;
+  color: #333;
+  background-color: rgb(255, 255, 159);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
+header img {
+  width: 900px;
+}
+
+#navigation ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  font-size: 2rem;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+
+
+#ispis {
+  display: flex;
+  justify-content: center;
+}
+
+.toy_img {
+  width: 300px;
+  margin: 20px;
+}
+
+.toy {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.add_to_cart_btn {
+  border-radius: 3px;
+  background-color: rgb(252, 52, 52);
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  border: 2px solid dodgerblue;
+  cursor: pointer;
+}
+
+.add_to_cart_btn:hover,
+.reg_btn:hover,
+.sign_in_btn:hover {
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.reg_btn {
+  border-radius: 3px;
+  background-color: dodgerblue;
+  padding: 6px 12px;
+  font-size: 1.4rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  border: 2px solid greenyellow;
+  cursor: pointer;
+  margin: 30px;
+}
+
+.sign_in_btn {
+  border-radius: 3px;
+  background-color: greenyellow;
+  padding: 6px 12px;
+  font-size: 1.4rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  border: 2px solid dodgerblue;
+  cursor: pointer;
+  margin: 30px;
+}
+
+#cart_icon {
+  margin: 15px;
+  cursor: pointer;
+}
+
+#cart_icon:hover {
+  color: greenyellow;
+}
+
+/* Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  top: 16%;
+  right: 13%;
+  font-size: 48px;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cart_content {
+  background-color: #fefefe;
+}
+
+#cart_content p {
+  background-color: #fefefe;
+  text-decoration: underline;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+}
+
+.product_price_cart {
+  border-bottom: #333;
+}
+
+/* Total */
+#total {
+  color: green;
+  margin-top: 20px;
+}
+
+
+input[type=number] {
+  border-radius: 3px;
+  border-style: none;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.remove_btn_cart {
+  background-color: red;
+  border: 1px solid black;
+  font-size: 1.1rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.row_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+ 
+}

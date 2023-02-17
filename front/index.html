@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Toys WebShop</title>
+</head>
+
+<body>
+  <header>
+    <h1>Toys for Kids</h1>
+    <div id="cart_icon"><i class="fa-solid fa-cart-shopping fa-xl"></i></div>
+    <div id="myModal" class="modal">
+      <div class="modal_content">
+        <div class="close">&times;</div>
+        <div id="cart_content">
+          <p>Your cart</p>
+        </div>
+        <div id="total">Total amount <span id="total_sum">0</span> $</div>
+      </div>
+    </div>
+    <div class="login">
+      <button class="reg_btn">Register</button>
+      <button class="sign_in_btn">Sign in</button>
+    </div>
+
+    <img src="img/main.webp" alt="toys">
+
+
+  </header>
+  <div id="navigation">
+    <!-- <ul>
+      <li>Cars</li>
+      <li>Dolls</li>
+      <li>Balls</li>
+      <li>Lego</li>
+      <li>Baby Toys</li>
+    </ul> -->
+  </div>
+  <main>
+    <div id="kategorije"></div>
+    <div id="ispis"></div>
+  </main>
+  <footer></footer>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
