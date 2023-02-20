@@ -143,6 +143,25 @@ header img {
   cursor: pointer;
 }
 
+.reg_btn_modal,
+.sign_in_btn_modal {
+  border-radius: 3px;
+  background-color: greenyellow;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  border: 1px solid dodgerblue;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.reg_btn_modal:hover,
+.sign_in_btn_modal:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: transparent;
+}
+
 #cart_content {
   background-color: #fefefe;
 }
@@ -162,8 +181,14 @@ header img {
 #total {
   color: green;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
+#total_sum {
+  margin-left: 10px;
+}
 
 input[type=number] {
   border-radius: 3px;
@@ -180,6 +205,10 @@ input[type=number] {
   padding: 5px 10px;
   border-radius: 5px;
   margin: 5px;
+}
+
+.remove_btn_cart:hover {
+  cursor: pointer;
 }
 
 .row_flex {

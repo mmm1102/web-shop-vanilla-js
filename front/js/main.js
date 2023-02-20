@@ -77,32 +77,70 @@ function renderToys(data) {
     elem.addEventListener("click", addToCart);
   });
   function addToCart(toys) {
-    alert("Toy added to cart");
     let btn = this;
     let parent = btn.parentElement;
     let desc = parent.querySelector(".product_name").textContent;
     let price = parent.querySelector(".product_price").textContent;
-    
 
-    renderCart(desc,price);
+    renderCart(desc, price);
+    updateTotal();
   }
 
-  function renderCart(desc,price){
+  function renderCart(desc, price) {
     const row = document.createElement("div");
     row.classList.add("row_flex");
+    let Names = document.querySelectorAll(".product_name_cart");
+    for (let i = 0; i < Names.length; i++) {
+      if (Names[i].textContent == desc) {
+        alert("The product is already in cart");
+        return;
+      }
+    }
     let html = `
     <div class="product_name_cart">${desc}</div>
     <div class="product_price_cart">${price}</div>
-    <div class="quantity_cart"><input type="number" min="1" max="10" value="1"></div>
-    <button class="remove_btn_cart">Remove</button>
+    <input type="number" min="1" max="10" value="1" class="quantity_cart">
+    <button class="remove_btn_cart">Remove</button>    
     `;
+
     row.innerHTML = html;
     cartContent.append(row);
+
+    row.querySelector(".remove_btn_cart").addEventListener("click", removeItem);
+    row.querySelector(".quantity_cart").addEventListener("change", updateTotal);
+  }
+
+  //Removing from cart
+  function removeItem() {
+    this.parentElement.remove();
+    updateTotal();
   }
 
   //Total sum
-  function updateTotal(){
-    let 
+  function updateTotal() {
+    let cartContent = document.getElementById("cart_content");
+    let rows = cartContent.querySelectorAll(".row_flex");
+    let total = 0;
+
+    for (let i = 0; i < rows.length; i++) {
+      let price_per_item = rows[i].querySelector(
+        ".product_price_cart"
+      ).textContent;
+      let cena = parseFloat(price_per_item.substring(0));
+      let kolicina = rows[i].querySelector(".quantity_cart").value;
+      total = total + cena * kolicina;
+    }
+    document.querySelector("#total_sum").textContent = total;
   }
 }
+
+//Redirection to Register Page
+document.querySelector(".reg_btn").addEventListener("click", function () {
+  window.location.href = "http://127.0.0.1:5500/front/register.html";
+});
+
+document.querySelector(".reg_btn_modal").addEventListener("click", function () {
+  window.location.href = "http://127.0.0.1:5500/front/register.html";
+});
+
 
