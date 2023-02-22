@@ -1,4 +1,9 @@
 let toys = {};
+let cars = {};
+let dolls = {};
+let balls = {};
+let lego = {};
+
 allToys();
 
 //Getting data from database
@@ -13,6 +18,26 @@ function allToys() {
     });
 }
 
+function filterCat (data) {
+
+let filterBtn = document.querySelectorAll(".filer_btn");
+filterBtn.addEventListener("click", function (){
+
+  axios.get("http://localhost:3000/${data}/")
+  .then (function (response){
+    renderCat(response.data.data);
+  })
+  .cath(function (err){
+    console.log(err);
+  })
+})
+function renderCat (data) {
+
+}
+
+
+}
+
 //Categories
 renderCategory();
 function renderCategory(data) {
@@ -21,14 +46,47 @@ function renderCategory(data) {
 
   html += `
     <ul>
-      <li>Cars</li>
-      <li>Dolls</li>
-      <li>Balls</li>
-      <li>Lego</li>
-      <li>Baby Toys</li>
+      <li class="filter_btn" id="all_cat">All</li>
+      <li class="filter_btn" id="cars_cat">Cars</li>
+      <li class="filter_btn" id="dolls_cat">Dolls</li>
+      <li class="filter_btn" id="balls_cat">Balls</li>
+      <li class="filter_btn" id="lego_cat">Lego</li>
+      <li class="filter_btn" id="baby_toys_cat">Baby Toys</li>
     </ul>
     `;
   document.getElementById("navigation").innerHTML = html;
+
+  //Render category
+  // let cars = document
+  //   .getElementById("cars_cat")
+  //   .addEventListener("click", function () {
+  //     axios
+  //       .get("http://localhost:3000/cars/")
+  //       .then(function (response) {
+  //         renderCars(response.data.data);
+  //       })
+  //       .catch(function (err) {
+  //         console.log(err);
+  //       });
+  //   });
+
+  //   function renderCars (data) {
+  //     cars = data;
+  //     let html = ``;
+
+  //     for (let i = 0; i< data.length; i++) {
+  //       html += `<div class="render_toys">
+  //       <img class="toy_img" src="${data[i].img}">
+  //       <div class="toy">  
+  //         <h3 class="product_name">${data[i].productName}</h3>
+  //         <h4 class="product_price">${data[i].price}$</h4>
+  //         <button class="add_to_cart_btn">Add to cart</button>
+  //       </div>
+  //     </div>
+  //     `;
+  //     document.getElementById("ispis").innerHTML = html;
+  //     }
+  //   }
 }
 
 //Main function
@@ -38,7 +96,7 @@ function renderToys(data) {
 
   for (let i = 0; i < data.length; i++) {
     html += `
-  <div>
+  <div class="render_toys">
     <img class="toy_img" src="${data[i].img}">
     <div class="toy">  
       <h3 class="product_name">${data[i].productName}</h3>
@@ -143,4 +201,13 @@ document.querySelector(".reg_btn_modal").addEventListener("click", function () {
   window.location.href = "http://127.0.0.1:5500/front/register.html";
 });
 
+//Redirection to Login Page
+document.querySelector(".sign_in_btn").addEventListener("click", function () {
+  window.location.href = "http://127.0.0.1:5500/front/login.html";
+});
 
+document
+  .querySelector(".sign_in_btn_modal")
+  .addEventListener("click", function () {
+    window.location.href = "http://127.0.0.1:5500/front/login.html";
+  });

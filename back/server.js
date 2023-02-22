@@ -48,6 +48,26 @@ app.get("/allToys", function (req, res) {
   });
 });
 
+
+//Read cars category from database
+
+app.get("/cars", function (req, res) {
+  konekcija.query("SELECT * FROM toy WHERE category='1'", function (err, result, field) {
+    if (result.length > 0) {
+      if (err) throw err;
+
+      res.json({
+        result: "ok",
+        data: result,
+      })
+    }else {
+      res.json({
+        result: "No toys",
+      })
+    }
+  })
+})
+
 //Middleware functions
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -64,8 +84,7 @@ connection.connect(function (err) {
   console.log("You have connected to web_shop database!");
 });
 
-
-// // CORS
+// CORS
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
   res.header(
@@ -74,7 +93,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-
 
 //Read users data from database
 app.post("/register", function (req, res) {
@@ -104,6 +122,31 @@ app.post("/register", function (req, res) {
         res.json({
           message: "User successfully added",
           data: "ok",
+        });
+      }
+    }
+  );
+});
+
+//Check user from Login Page
+
+app.post("/checkUser", function (req, res) {
+  const { username, password } = req.body;
+
+  connection.query(
+    "SELECT * from web_shop_users where username=? and password=?",
+    [username, password],
+    function (err, result, field) {
+      if (result.length > 0) {
+        res.json({
+          message: "Successfull login",
+          data: "ok",
+          result: result,
+        });
+      } else {
+        res.json({
+          message: "Failed to login",
+          data: "Notok",
         });
       }
     }

@@ -8,7 +8,7 @@
 body {
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 20px;
-  color: #333;
+  color: black;
   background-color: rgb(255, 255, 159);
 }
 
@@ -37,15 +37,33 @@ header img {
   border-radius: 5px;
 }
 
+#all_cat,
+#cars_cat,
+#dolls_cat,
+#balls_cat,
+#lego_cat,
+#baby_toys_cat {
+  cursor: pointer;
+}
 
+#all_cat:hover,
+#cars_cat:hover,
+#dolls_cat:hover,
+#balls_cat:hover,
+#lego_cat:hover,
+#baby_toys_cat:hover {
+  color: rgb(218, 57, 57);
+  font-size: 1.9rem;
+}
 
 #ispis {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  
 }
 
 .toy_img {
-  width: 300px;
+  width: 200px;
   margin: 20px;
 }
 
@@ -55,40 +73,41 @@ header img {
 }
 
 .add_to_cart_btn {
-  border-radius: 3px;
-  background-color: rgb(252, 52, 52);
+  border-radius: 8px;
+  background-color: greenyellow;
   padding: 6px 12px;
   font-size: 1rem;
   font-family: 'Love Ya Like A Sister', cursive;
-  border: 2px solid dodgerblue;
+  border: 1px solid black;
   cursor: pointer;
 }
 
 .add_to_cart_btn:hover,
 .reg_btn:hover,
 .sign_in_btn:hover {
-  background-color: transparent;
+  background-color: dodgerblue;
+  color: chartreuse;
   transition: 0.3s;
 }
 
 .reg_btn {
-  border-radius: 3px;
+  border-radius: 8px;
   background-color: dodgerblue;
   padding: 6px 12px;
   font-size: 1.4rem;
   font-family: 'Love Ya Like A Sister', cursive;
-  border: 2px solid greenyellow;
+  border: 1px solid black;
   cursor: pointer;
   margin: 30px;
 }
 
 .sign_in_btn {
-  border-radius: 3px;
+  border-radius: 8px;
   background-color: greenyellow;
   padding: 6px 12px;
   font-size: 1.4rem;
   font-family: 'Love Ya Like A Sister', cursive;
-  border: 2px solid dodgerblue;
+  border: 1px solid black;
   cursor: pointer;
   margin: 30px;
 }
@@ -145,7 +164,7 @@ header img {
 
 .reg_btn_modal,
 .sign_in_btn_modal {
-  border-radius: 3px;
+  border-radius: 8px;
   background-color: greenyellow;
   padding: 5px 10px;
   font-size: 1rem;
@@ -203,7 +222,7 @@ input[type=number] {
   font-size: 1.1rem;
   font-family: 'Love Ya Like A Sister', cursive;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   margin: 5px;
 }
 
