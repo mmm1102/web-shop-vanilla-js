@@ -50,9 +50,62 @@ app.get("/allToys", function (req, res) {
 
 
 //Read cars category from database
-
 app.get("/cars", function (req, res) {
   konekcija.query("SELECT * FROM toy WHERE category='1'", function (err, result, field) {
+    if (result.length > 0) {
+      if (err) throw err;
+
+      res.json({
+        result: "ok",
+        data: result,
+      })
+    }else {
+      res.json({
+        result: "No toys",
+      })
+    }
+  })
+})
+
+//Read dolls category from database
+app.get("/dolls", function (req, res) {
+  konekcija.query("SELECT * FROM toy WHERE category='2'", function (err, result, field) {
+    if (result.length > 0) {
+      if (err) throw err;
+
+      res.json({
+        result: "ok",
+        data: result,
+      })
+    }else {
+      res.json({
+        result: "No toys",
+      })
+    }
+  })
+})
+
+//Read balls category from database
+app.get("/balls", function (req, res) {
+  konekcija.query("SELECT * FROM toy WHERE category='3'", function (err, result, field) {
+    if (result.length > 0) {
+      if (err) throw err;
+
+      res.json({
+        result: "ok",
+        data: result,
+      })
+    }else {
+      res.json({
+        result: "No toys",
+      })
+    }
+  })
+})
+
+//Read lego category from database
+app.get("/lego", function (req, res) {
+  konekcija.query("SELECT * FROM toy WHERE category='4'", function (err, result, field) {
     if (result.length > 0) {
       if (err) throw err;
 

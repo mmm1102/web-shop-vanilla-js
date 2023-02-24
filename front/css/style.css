@@ -27,6 +27,12 @@ header img {
   width: 900px;
 }
 
+.countItem {
+  position: relative;
+  bottom: 20px;
+  
+}
+
 #navigation ul {
   display: flex;
   justify-content: space-around;
@@ -62,9 +68,19 @@ header img {
   
 }
 
+.product_name {
+  font-size: 18px;
+  margin-left: 15%;
+
+}
+
+.product_price {
+  margin-left: 40%;
+}
+
 .toy_img {
   width: 200px;
-  margin: 20px;
+  margin: 3px;
 }
 
 .toy {
@@ -80,6 +96,7 @@ header img {
   font-family: 'Love Ya Like A Sister', cursive;
   border: 1px solid black;
   cursor: pointer;
+  margin-left: 20%;
 }
 
 .add_to_cart_btn:hover,
@@ -143,6 +160,10 @@ header img {
   padding: 20px;
   border: 1px solid black;
   width: 80%;
+}
+
+.product_img_cart {
+  width: 100px;
 }
 
 .close {

@@ -11,6 +11,18 @@ body {
   color: black;
 }
 
+h1, h2 {
+display: flex;
+justify-content: center;
+margin: 20px;
+
+}
+
+#user {
+  color: blueviolet;
+}
+
+
 .log_out_btn {
   position: absolute;
   top:10%;
@@ -31,4 +43,84 @@ body {
   background-color: white;
   color: springgreen;
   transition: 0.3s;
+}
+
+.product_img_cart {
+  width: 100px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.product_price_cart {
+  border-bottom: #333;
+}
+
+#cart_content {
+  background-color: rgba(255, 172, 214, 0.996);
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 80%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.add_to_cart_btn {
+  border-radius: 8px;
+  background-color: greenyellow;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-left: 20%;
+}
+
+.add_to_cart_btn:hover,
+.reg_btn:hover,
+.sign_in_btn:hover {
+  background-color: dodgerblue;
+  color: chartreuse;
+  transition: 0.3s;
+}
+
+input[type=number] {
+  border-radius: 3px;
+  border-style: none;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.remove_btn_cart {
+  background-color: red;
+  border: 1px solid black;
+  font-size: 1.1rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.remove_btn_cart:hover {
+  cursor: pointer;
+}
+
+.row_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+
+}
+
+#total {
+  font-size: 1.5rem;
+  align-self: flex-end;
+  margin-top: 15px;
+}
+
+#total_sum {
+  margin-left: 10px;
 }

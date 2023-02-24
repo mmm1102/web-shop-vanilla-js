@@ -3,7 +3,7 @@ let cars = {};
 let dolls = {};
 let balls = {};
 let lego = {};
-
+let objArr = [];
 allToys();
 
 //Getting data from database
@@ -18,26 +18,6 @@ function allToys() {
     });
 }
 
-function filterCat (data) {
-
-let filterBtn = document.querySelectorAll(".filer_btn");
-filterBtn.addEventListener("click", function (){
-
-  axios.get("http://localhost:3000/${data}/")
-  .then (function (response){
-    renderCat(response.data.data);
-  })
-  .cath(function (err){
-    console.log(err);
-  })
-})
-function renderCat (data) {
-
-}
-
-
-}
-
 //Categories
 renderCategory();
 function renderCategory(data) {
@@ -46,47 +26,144 @@ function renderCategory(data) {
 
   html += `
     <ul>
-      <li class="filter_btn" id="all_cat">All</li>
-      <li class="filter_btn" id="cars_cat">Cars</li>
-      <li class="filter_btn" id="dolls_cat">Dolls</li>
-      <li class="filter_btn" id="balls_cat">Balls</li>
-      <li class="filter_btn" id="lego_cat">Lego</li>
-      <li class="filter_btn" id="baby_toys_cat">Baby Toys</li>
+      <li id="all_cat">All</li>
+      <li id="cars_cat">Cars</li>
+      <li id="dolls_cat">Dolls</li>
+      <li id="balls_cat">Balls</li>
+      <li id="lego_cat">Lego</li>
     </ul>
     `;
   document.getElementById("navigation").innerHTML = html;
 
-  //Render category
-  // let cars = document
-  //   .getElementById("cars_cat")
-  //   .addEventListener("click", function () {
-  //     axios
-  //       .get("http://localhost:3000/cars/")
-  //       .then(function (response) {
-  //         renderCars(response.data.data);
-  //       })
-  //       .catch(function (err) {
-  //         console.log(err);
-  //       });
-  //   });
+//Render all
+document.getElementById("all_cat").addEventListener("click", allToys);
 
-  //   function renderCars (data) {
-  //     cars = data;
-  //     let html = ``;
+  //Render cars category
+  let cars = document
+    .getElementById("cars_cat")
+    .addEventListener("click", function () {
+      axios
+        .get("http://localhost:3000/cars/")
+        .then(function (response) {
+          renderFilter(response.data.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
 
-  //     for (let i = 0; i< data.length; i++) {
-  //       html += `<div class="render_toys">
-  //       <img class="toy_img" src="${data[i].img}">
-  //       <div class="toy">  
-  //         <h3 class="product_name">${data[i].productName}</h3>
-  //         <h4 class="product_price">${data[i].price}$</h4>
-  //         <button class="add_to_cart_btn">Add to cart</button>
-  //       </div>
-  //     </div>
-  //     `;
-  //     document.getElementById("ispis").innerHTML = html;
-  //     }
-  //   }
+  function renderFilter(data) {
+    cars = data;
+    let html = ``;
+
+    for (let i = 0; i < data.length; i++) {
+      html += `<div class="render_toys">
+        <img class="toy_img" src="${data[i].img}">
+        <div class="toy">  
+          <h3 class="product_name">${data[i].productName}</h3>
+          <h4 class="product_price">${data[i].price}$</h4>
+          <button class="add_to_cart_btn">Add to cart</button>
+        </div>
+      </div>
+      `;
+      document.getElementById("ispis").innerHTML = html;
+    }
+  }
+
+  //Render dolls category
+  let dolls = document
+  .getElementById("dolls_cat")
+  .addEventListener("click", function () {
+    axios
+      .get("http://localhost:3000/dolls/")
+      .then(function (response) {
+        renderFilter(response.data.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  });
+
+function renderFilter(data) {
+  dolls = data;
+  let html = ``;
+
+  for (let i = 0; i < data.length; i++) {
+    html += `<div class="render_toys">
+      <img class="toy_img" src="${data[i].img}">
+      <div class="toy">  
+        <h3 class="product_name">${data[i].productName}</h3>
+        <h4 class="product_price">${data[i].price}$</h4>
+        <button class="add_to_cart_btn">Add to cart</button>
+      </div>
+    </div>
+    `;
+    document.getElementById("ispis").innerHTML = html;
+  }
+}
+  //Render balls category
+  let balls= document
+  .getElementById("balls_cat")
+  .addEventListener("click", function () {
+    axios
+      .get("http://localhost:3000/balls/")
+      .then(function (response) {
+        renderFilter(response.data.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  });
+
+function renderFilter(data) {
+  balls = data;
+  let html = ``;
+
+  for (let i = 0; i < data.length; i++) {
+    html += `<div class="render_toys">
+      <img class="toy_img" src="${data[i].img}">
+      <div class="toy">  
+        <h3 class="product_name">${data[i].productName}</h3>
+        <h4 class="product_price">${data[i].price}$</h4>
+        <button class="add_to_cart_btn">Add to cart</button>
+      </div>
+    </div>
+    `;
+    document.getElementById("ispis").innerHTML = html;
+  }
+}
+  //Render lego category
+  let lego= document
+  .getElementById("lego_cat")
+  .addEventListener("click", function () {
+    axios
+      .get("http://localhost:3000/lego/")
+      .then(function (response) {
+        renderFilter(response.data.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  });
+
+function renderFilter(data) {
+  lego = data;
+  let html = ``;
+
+  for (let i = 0; i < data.length; i++) {
+    html += `<div class="render_toys">
+      <img class="toy_img" src="${data[i].img}">
+      <div class="toy">  
+        <h3 class="product_name">${data[i].productName}</h3>
+        <h4 class="product_price">${data[i].price}$</h4>
+        <button class="add_to_cart_btn">Add to cart</button>
+      </div>
+    </div>
+    `;
+    document.getElementById("ispis").innerHTML = html;
+  }
+}
+
 }
 
 //Main function
@@ -97,8 +174,9 @@ function renderToys(data) {
   for (let i = 0; i < data.length; i++) {
     html += `
   <div class="render_toys">
-    <img class="toy_img" src="${data[i].img}">
+    
     <div class="toy">  
+      <img class="toy_img" src="${data[i].img}">
       <h3 class="product_name">${data[i].productName}</h3>
       <h4 class="product_price">${data[i].price}$</h4>
       <button class="add_to_cart_btn">Add to cart</button>
@@ -134,17 +212,30 @@ function renderToys(data) {
   addToCartBtn.forEach((elem) => {
     elem.addEventListener("click", addToCart);
   });
+
   function addToCart(toys) {
     let btn = this;
     let parent = btn.parentElement;
+    let productImg = parent.querySelector(".toy_img").src;
     let desc = parent.querySelector(".product_name").textContent;
     let price = parent.querySelector(".product_price").textContent;
 
-    renderCart(desc, price);
-    updateTotal();
-  }
+   
 
-  function renderCart(desc, price) {
+    let objArr1 = {productImg, desc, price};
+    objArr.push(objArr1);
+    
+  
+
+    renderCart(productImg, desc, price);
+    updateTotal();
+
+   
+    localStorage.setItem("cart", JSON.stringify(objArr))
+  }
+  console.log(objArr);
+
+  function renderCart(productImg,desc, price) {
     const row = document.createElement("div");
     row.classList.add("row_flex");
     let Names = document.querySelectorAll(".product_name_cart");
@@ -155,6 +246,7 @@ function renderToys(data) {
       }
     }
     let html = `
+    <img class="product_img_cart" src="${productImg}">
     <div class="product_name_cart">${desc}</div>
     <div class="product_price_cart">${price}</div>
     <input type="number" min="1" max="10" value="1" class="quantity_cart">
@@ -166,6 +258,11 @@ function renderToys(data) {
 
     row.querySelector(".remove_btn_cart").addEventListener("click", removeItem);
     row.querySelector(".quantity_cart").addEventListener("change", updateTotal);
+
+    let quantity = row.querySelector(".quantity_cart").value;
+    console.log(quantity);
+  
+  
   }
 
   //Removing from cart
@@ -189,6 +286,7 @@ function renderToys(data) {
       total = total + cena * kolicina;
     }
     document.querySelector("#total_sum").textContent = total;
+    
   }
 }
 
