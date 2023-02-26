@@ -4,6 +4,9 @@ let dolls = {};
 let balls = {};
 let lego = {};
 let objArr = [];
+let objArr1 = {};
+let productsCart = {};
+let countItem = document.querySelector(".countItem");
 allToys();
 
 //Getting data from database
@@ -35,8 +38,8 @@ function renderCategory(data) {
     `;
   document.getElementById("navigation").innerHTML = html;
 
-//Render all
-document.getElementById("all_cat").addEventListener("click", allToys);
+  //Render all
+  document.getElementById("all_cat").addEventListener("click", allToys);
 
   //Render cars category
   let cars = document
@@ -72,24 +75,24 @@ document.getElementById("all_cat").addEventListener("click", allToys);
 
   //Render dolls category
   let dolls = document
-  .getElementById("dolls_cat")
-  .addEventListener("click", function () {
-    axios
-      .get("http://localhost:3000/dolls/")
-      .then(function (response) {
-        renderFilter(response.data.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
+    .getElementById("dolls_cat")
+    .addEventListener("click", function () {
+      axios
+        .get("http://localhost:3000/dolls/")
+        .then(function (response) {
+          renderFilter(response.data.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
 
-function renderFilter(data) {
-  dolls = data;
-  let html = ``;
+  function renderFilter(data) {
+    dolls = data;
+    let html = ``;
 
-  for (let i = 0; i < data.length; i++) {
-    html += `<div class="render_toys">
+    for (let i = 0; i < data.length; i++) {
+      html += `<div class="render_toys">
       <img class="toy_img" src="${data[i].img}">
       <div class="toy">  
         <h3 class="product_name">${data[i].productName}</h3>
@@ -98,29 +101,29 @@ function renderFilter(data) {
       </div>
     </div>
     `;
-    document.getElementById("ispis").innerHTML = html;
+      document.getElementById("ispis").innerHTML = html;
+    }
   }
-}
   //Render balls category
-  let balls= document
-  .getElementById("balls_cat")
-  .addEventListener("click", function () {
-    axios
-      .get("http://localhost:3000/balls/")
-      .then(function (response) {
-        renderFilter(response.data.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
+  let balls = document
+    .getElementById("balls_cat")
+    .addEventListener("click", function () {
+      axios
+        .get("http://localhost:3000/balls/")
+        .then(function (response) {
+          renderFilter(response.data.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
 
-function renderFilter(data) {
-  balls = data;
-  let html = ``;
+  function renderFilter(data) {
+    balls = data;
+    let html = ``;
 
-  for (let i = 0; i < data.length; i++) {
-    html += `<div class="render_toys">
+    for (let i = 0; i < data.length; i++) {
+      html += `<div class="render_toys">
       <img class="toy_img" src="${data[i].img}">
       <div class="toy">  
         <h3 class="product_name">${data[i].productName}</h3>
@@ -129,29 +132,29 @@ function renderFilter(data) {
       </div>
     </div>
     `;
-    document.getElementById("ispis").innerHTML = html;
+      document.getElementById("ispis").innerHTML = html;
+    }
   }
-}
   //Render lego category
-  let lego= document
-  .getElementById("lego_cat")
-  .addEventListener("click", function () {
-    axios
-      .get("http://localhost:3000/lego/")
-      .then(function (response) {
-        renderFilter(response.data.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
+  let lego = document
+    .getElementById("lego_cat")
+    .addEventListener("click", function () {
+      axios
+        .get("http://localhost:3000/lego/")
+        .then(function (response) {
+          renderFilter(response.data.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
 
-function renderFilter(data) {
-  lego = data;
-  let html = ``;
+  function renderFilter(data) {
+    lego = data;
+    let html = ``;
 
-  for (let i = 0; i < data.length; i++) {
-    html += `<div class="render_toys">
+    for (let i = 0; i < data.length; i++) {
+      html += `<div class="render_toys">
       <img class="toy_img" src="${data[i].img}">
       <div class="toy">  
         <h3 class="product_name">${data[i].productName}</h3>
@@ -160,10 +163,9 @@ function renderFilter(data) {
       </div>
     </div>
     `;
-    document.getElementById("ispis").innerHTML = html;
+      document.getElementById("ispis").innerHTML = html;
+    }
   }
-}
-
 }
 
 //Main function
@@ -220,22 +222,23 @@ function renderToys(data) {
     let desc = parent.querySelector(".product_name").textContent;
     let price = parent.querySelector(".product_price").textContent;
 
-   
-
-    let objArr1 = {productImg, desc, price};
+    objArr1 = { productImg, desc, price };
     objArr.push(objArr1);
-    
-  
 
     renderCart(productImg, desc, price);
     updateTotal();
+    counterCart();
 
-   
-    localStorage.setItem("cart", JSON.stringify(objArr))
+    localStorage.setItem("cart", JSON.stringify(objArr));
   }
-  console.log(objArr);
 
-  function renderCart(productImg,desc, price) {
+  function counterCart() {
+    countItem.innerHTML = objArr.length;
+  }
+
+  // console.log(objArr);
+
+  function renderCart(productImg, desc, price) {
     const row = document.createElement("div");
     row.classList.add("row_flex");
     let Names = document.querySelectorAll(".product_name_cart");
@@ -261,15 +264,23 @@ function renderToys(data) {
 
     let quantity = row.querySelector(".quantity_cart").value;
     console.log(quantity);
-  
-  
   }
 
   //Removing from cart
   function removeItem() {
-    this.parentElement.remove();
+    tajProizvod = this.parentElement.remove();
+
+    itemIndex = tajProizvod;
+    objArr.splice(itemIndex, 1);
+    console.log(objArr);
+
+    //Update local Storage
+    localStorage.setItem("cart", JSON.stringify(objArr));
+
     updateTotal();
+    counterCart();
   }
+
 
   //Total sum
   function updateTotal() {
@@ -286,7 +297,6 @@ function renderToys(data) {
       total = total + cena * kolicina;
     }
     document.querySelector("#total_sum").textContent = total;
-    
   }
 }
 

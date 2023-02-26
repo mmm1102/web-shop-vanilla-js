@@ -1,3 +1,5 @@
+let objArr = [];
+
 renderProfile();
 
 function renderProfile() {
@@ -14,15 +16,21 @@ function renderProfile() {
   });
 }
 
-  //Geting data from local Storage
-let cartContent = document.getElementById("cart_content");
-let old_data = JSON.parse(localStorage.getItem("cart"));
+//Geting data from local Storage
+cartContent = document.getElementById("cart_content");
+old_data = JSON.parse(localStorage.getItem("cart"));
 let html = ``;
 
 //Render cart content
-renderCart()
+renderCart();
 function renderCart() {
+  if (old_data.length == 0){
 
+    cartContent.innerHTML += `Your shoppinig cart is empty`;
+
+  } else {
+
+  
   old_data.forEach((elem) => {
     console.log(elem);
     html = `
@@ -33,32 +41,46 @@ function renderCart() {
       <input type="number" min="1" max="10" value="1" class="quantity_cart">
       <button class="remove_btn_cart">Remove</button>  
     </div>
-`;
+    `;
     cartContent.innerHTML += html;
-
   });
 
-  //Setting listeners on remove and quantity
+  //Setting listeners on remove btn and quantity
   let removeBtns = document.querySelectorAll(".remove_btn_cart");
-  removeBtns.forEach(elem => {
-    elem.addEventListener("click", removeItem)
-  })
+  removeBtns.forEach((elem) => {
+    elem.addEventListener("click", removeItem);
+  });
 
-let changeQua = document.querySelectorAll(".quantity_cart");
-changeQua.forEach(elem => {
-  elem.addEventListener("change", updateTotal);
-})
-
+  let changeQua = document.querySelectorAll(".quantity_cart");
+  changeQua.forEach((elem) => {
+    elem.addEventListener("change", updateTotal);
+  });
 
   function removeItem() {
-    this.parentElement.remove();
-    localStorage.removeItem(this)
+    
+    if (old_data.length == 0 ){
+      cartContent.innerHTML += `Your shoppinig cart is empty`;
+    } else {
+      
+    
+    tajProizvod = this.parentElement.remove();
+
+    itemIndex = tajProizvod;
+    let old_data = JSON.parse(localStorage.getItem("cart"));
+    
+
+    let index = old_data.indexOf(itemIndex);
+    old_data.splice(itemIndex, 1);
+
+    //Update local Storage
+    localStorage.setItem("cart", JSON.stringify(old_data));
+
     updateTotal();
+  }}
   }
 
   //Total sum
   function updateTotal() {
-    // let cartContent = document.getElementById("cart_content");
     let rows = document.querySelectorAll(".row_flex");
     let total = 0;
 
