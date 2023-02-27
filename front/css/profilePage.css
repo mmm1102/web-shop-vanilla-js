@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: turquoise;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(255,178,158,1) 55%);
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 20px;
   color: black;
@@ -19,7 +20,7 @@ margin: 20px;
 }
 
 #user {
-  color: blueviolet;
+  color: #1ac0c6;
 }
 
 
@@ -32,7 +33,7 @@ margin: 20px;
   width: 120px;
   padding: 8px;
   border: 1px solid black;
-  background-color: red;
+  background-color: #e74645;
   color: white;
   padding: 8px;
   border-radius: 10px;
@@ -56,15 +57,18 @@ margin: 20px;
 }
 
 #cart_content {
-  background-color: rgba(255, 172, 214, 0.996);
+  background-color: #facd60;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 30px;
+
   padding: 20px;
   border: 1px solid black;
   border-radius: 8px;
   width: 80%;
   display: flex;
   flex-direction: column;
+  
 }
 
 .add_to_cart_btn {
@@ -94,7 +98,7 @@ input[type=number] {
 }
 
 .remove_btn_cart {
-  background-color: red;
+  background-color: #e74645;
   border: 1px solid black;
   font-size: 1.1rem;
   font-family: 'Love Ya Like A Sister', cursive;
@@ -124,3 +128,112 @@ input[type=number] {
 #total_sum {
   margin-left: 10px;
 }
+
+
+#users_btn,
+#toys_btn {
+  display: inline-block;
+  background-color: #e74645;
+  border: 1px solid black;
+  font-size: 1.2rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+#users_btn:hover,
+#toys_btn:hover {
+  cursor: pointer;
+  color: azure;
+  background-color: transparent;
+  transition: 0.4s;
+  border-color: azure; box-shadow: 0px 0px 50px 5px #0ff;
+}
+
+.wrapper {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.db_info {
+  width: 50%;
+display: flex;
+justify-content: center;
+margin-top: 20px;
+margin-bottom: 30px;
+}
+
+/* Render toys from database*/
+.toy_img {
+  width: 70px;
+}
+
+.product_name,
+.product_price {
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+ th, td {
+  font-size: 16px;
+  border: 1px solid black;
+  text-align: center;
+  width: 150px;
+  height: 70px;
+}
+
+th {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.update_name_btn,
+.remove_btn,
+.update_user_btn,
+.remove_user_btn {
+
+  display: inline-block;
+  background-color: #0ff;
+  border: 1px solid black;
+  font-size: 1.2rem;
+  font-family: 'Love Ya Like A Sister', cursive;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.remove_btn,
+.remove_user_btn {
+  background-color: #faf060;
+}
+
+.update_name_btn:hover,
+.remove_btn:hover,
+.update_user_btn:hover,
+.remove_user_btn:hover {
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+
+input[type=text] {
+  font-size: 16px;
+  font-family: 'Love Ya Like A Sister', cursive;
+  padding: 3px;
+  width: 95%;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: rgb(197, 246, 206);
+}
+
+input[type=text]:hover {
+  cursor: pointer;
+}
+

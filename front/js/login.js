@@ -30,7 +30,7 @@ function checkLogin(data) {
     alert ("Successfully logged in!");
     sessionStorage.setItem(
       "user",
-      JSON.stringify({ username: username})
+      JSON.stringify({ username: username, rola: data.result[0].rola})
     );
     window.location.href = "http://127.0.0.1:5500/front/profilePage.html";
   } else {
