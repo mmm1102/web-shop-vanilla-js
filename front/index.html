@@ -19,46 +19,54 @@
 </head>
 
 <body>
-  <header>
-    <h1>Toys for Kids</h1>
-    <div id="cart_icon"><i class="fa-solid fa-cart-shopping fa-xl"></i><span class="countItem">0</span></div>
-    <div id="myModal" class="modal">
-      <div class="modal_content">
-        <div class="close">&times;</div>
-        <div id="cart_content">
-          <p>Your cart</p>
+  <div id="loader"></div>
+  <section id="myDiv" class="animate-bottom">
+    <header>
+    
+      <h1>Toys for Kids</h1>
+      <div id="cart_icon"><i class="fa-solid fa-cart-shopping fa-xl"></i><span class="countItem">0</span></div>
+      <div id="myModal" class="modal">
+        <div class="modal_content">
+          <div class="close">&times;</div>
+          <div id="cart_content">
+            <p>Your cart</p>
+          </div>
+          <div id="total">Total amount <span id="total_sum">0</span> $
+            <button class="reg_btn_modal">Register</button>
+            <button class="sign_in_btn_modal">Log in</button>
+          </div>
+          <p>To order a product, you need to Register/Log in </p>
         </div>
-        <div id="total">Total amount <span id="total_sum">0</span> $
-          <button class="reg_btn_modal">Register</button>
-          <button class="sign_in_btn_modal">Log in</button>
-        </div>
-        <p>To order a product, you need to Register/Log in </p>
       </div>
-    </div>
-    <div class="login">
-      <button class="reg_btn">Register</button>
-      <button class="sign_in_btn">Log in</button>
-    </div>
+      <div class="login">
+        <button class="reg_btn">Register</button>
+        <button class="sign_in_btn">Log in</button>
+      </div>
 
-    <img src="img/main.webp" alt="toys">
+      <img src="img/main.webp" alt="toys">
 
 
-  </header>
-  <div id="navigation">
-    <!-- <ul>
+    </header>
+
+    <div id="navigation">
+      <!-- <ul>
       <li>Cars</li>
       <li>Dolls</li>
       <li>Balls</li>
       <li>Lego</li>
       <li>Baby Toys</li>
     </ul> -->
-  </div>
-  <main>
-    <div id="kategorije"></div>
-    <div id="ispis"></div>
-  </main>
-  <footer></footer>
+    </div>
+    <main>
+      <div id="kategorije"></div>
+      <div id="ispis"></div>
+    </main>
+    <footer>
+      <div id="pageNum"></div>
+    </footer>
+  </section>
   <script src="js/main.js"></script>
+
 </body>
 
 </html>

@@ -58,7 +58,7 @@ app.get("/allToys", function (req, res) {
 });
 
 //Update toy info
-app.put("/update", (req, res) => {
+app.put("/updateToy", (req, res) => {
   let id = req.body.id;
   let name = req.body.newName;
   konekcija.query(
@@ -258,7 +258,6 @@ app.post("/register", function (req, res) {
 });
 
 //Check user from Login Page
-
 app.post("/checkUser", function (req, res) {
   const { username, password } = req.body;
 
@@ -278,6 +277,23 @@ app.post("/checkUser", function (req, res) {
           data: "Notok",
         });
       }
+    }
+  );
+});
+
+//Update user info
+app.put("/updateUser", (req, res) => {
+  let id = req.body.id;
+  let name = req.body.newEmail;
+  connection.query(
+    "UPDATE web_shop_users SET email=? where id=?",
+    [name, id],
+    function (err, result, field) {
+      if (err) throw err;
+
+      res.json({
+        result: "Email is updated",
+      });
     }
   );
 });

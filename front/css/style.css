@@ -11,6 +11,9 @@ body {
   color: black;
   background-color: rgb(255, 255, 159);
 }
+#myDiv {
+  display: none;
+}
 
 h1 {
   font-size: 3rem;
@@ -65,6 +68,7 @@ header img {
 #ispis {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   
 }
 
@@ -75,11 +79,11 @@ header img {
 }
 
 .product_price {
-  margin-left: 40%;
+  margin-left: 33%;
 }
 
 .toy_img {
-  width: 200px;
+  width: 300px;
   margin: 3px;
 }
 
@@ -257,4 +261,76 @@ input[type=number] {
   align-items: center;
   border-bottom: 1px solid black;
  
+}
+
+#pageNum{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pageNum p{
+  margin-right: 10px;
+  border: 1px solid black;
+  padding: 5px;
+;
+  border-radius: 20px;
+}
+
+#pageNum p:hover {
+  cursor: pointer;
+  background-color: dodgerblue;
+  transition: 0.3s;
+}
+
+footer {
+  margin-bottom: 40px;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -76px 0 0 -40px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
 }

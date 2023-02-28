@@ -105,6 +105,7 @@ function adminPrivileges() {
     let allToysBtn = document
       .getElementById("toys_btn")
       .addEventListener("click", allToys);
+
     function allToys() {
       axios
         .get("http://localhost:3000/allToys/")
@@ -150,67 +151,59 @@ function adminPrivileges() {
           html = "Nema rezultata";
         }
         ispis.innerHTML = html;
+
+        const btnDelToy = document.querySelectorAll(".remove_btn");
+        const btnUpdateName = document.querySelectorAll(".update_name_btn");
+
+        btnUpdateName.forEach((elem) => {
+          elem.addEventListener("click", function (e) {
+            let id = e.target.dataset.id;
+            let value = document.querySelector(".product_name" + id).value;
+            console.log(id);
+
+            axios
+              .put("http://localhost:3000/updateToy", {
+                id: id,
+                newName: value,
+              })
+              .then((response) => {
+                alert(response.data.result);
+                allToys();
+              })
+              .catch(function (err) {
+                console.error(err.response);
+              });
+          });
+        });
+
+        //Delete product from database
+        const delBtn = document.querySelectorAll(".remove_btn");
+
+        delBtn.forEach((elem) => {
+          elem.addEventListener("click", function (e) {
+            let id = e.target.dataset.id;
+            console.log(id);
+
+            axios
+              .delete("http://localhost:3000/toy", { data: { id: id } 
+            })
+              .then((response) => {
+                alert(response.data.result);
+                allToys();
+              })
+              .catch(function (err) {
+                console.log(err);
+              });
+          });
+        });
       }
-
-      //Updade products info
-      const btnUpdateName = document.querySelectorAll(".update_name_btn");
-
-      btnUpdateName.forEach((elem) => {
-        elem.addEventListener("click", function (e) {
-          let id = e.target.dataset.id;
-          let value = document.querySelector(".product_name" + id).value;
-          console.log(id);
-
-          axios
-            .put("http://localhost:3000/update", {
-              id: id,
-              newName: value,
-            })
-            .then((response) => {
-              alert(response.data.result);
-              allToys();
-            })
-            .catch(function (err) {
-              console.error(err.response);
-            });
-        });
-      });
-
-      //Delete product from database
-      const delBtn = document.querySelectorAll(".remove_btn");
-
-      delBtn.forEach((elem) => {
-        elem.addEventListener("click", function (e) {
-          let id = e.target.dataset.id;
-          console.log(id);
-
-          axios
-            .delete("http://localhost:3000/toy", { data: { id: id } })
-            .then((response) => {
-              alert(response.data.result);
-              allToys();
-            })
-            .catch(function (err) {
-              console.log(err);
-            });
-        });
-      });
     }
-  }
-}
 
-
-
-function adminPriv() {
-  if (JSON.parse(sessionStorage.getItem("user")).rola == "1") {
-    wrapper.style.display = "flex";
-    //Render toys from database
-    const ispis = document.querySelector(".render_db_info");
-    //Render registered users from database
-
+    //Users
     let allUsersBtn = document
       .getElementById("users_btn")
       .addEventListener("click", allUsers);
+
     function allUsers() {
       axios
         .get("http://localhost:3000/allUsers/")
@@ -225,61 +218,84 @@ function adminPriv() {
     function renderUsers(data) {
       users = data;
       let html = `
-    <table>
-    <tr>
-    <th>id</th>
-    <th>ime</th>
-    <th>prezime</th>
-    <th>username</th>
-    <th>email</th>
-    <th>password</th>
-    <th>rola</th>
-    <th>update info</th>
-    <th>remove user</th>
-    </tr>
-    </table>
+      <table>
+        <tr>
+          <th>id</th>
+          <th>ime</th>
+          <th>prezime</th>
+          <th>username</th>
+          <th>email</th>
+          <th>password</th>
+          <th>rola</th>
+          <th>update info</th>
+          <th>remove user</th>
+        </tr>
+      </table>
     `;
       for (let i = 0; i < data.length; i++) {
         html += `
  
-  <table>
-    <tr>
-      <td>${data[i].id}</td>
-      <td>${data[i].firstName}</td>
-      <td>${data[i].lastName}</td>
-      <td>${data[i].username}</td>
-      <td>${data[i].email}</td>
-      <td>${data[i].password}</td>
-      <td>${data[i].rola}</td>
-    
-    
-      <td><button class="update_user_btn" data-id="${data[i].id}">Update</button></td>
-      <td><button class="remove_user_btn" data-id="${data[i].id}">Remove</button></td>
-    </tr>
-  </table>
+        <table>
+            <tr>
+              <td>${data[i].id}</td>
+              <td>${data[i].firstName}</td>
+              <td>${data[i].lastName}</td>
+              <td>${data[i].username}</td>
+              <td><input type='text' class="updEmail${data[i].id}" value="${data[i].email}"></td>
+              <td>${data[i].password}</td>
+              <td>${data[i].rola}</td>
+        
+              <td><button class="update_user_btn" data-id="${data[i].id}">Update</button></td>
+              <td><button class="remove_user_btn" data-id="${data[i].id}">Remove</button></td>
+            </tr>
+          </table>
   `;
         if (data.length == 0) {
           html = "Nema rezultata";
         }
-
         ispis.innerHTML = html;
-      }
-renderUsers()
-      const delUserBtn = document.querySelectorAll(".remove_user_btn");
-      delUserBtn.addEventListener("click", function (e) {
-        let id = e.target.dataset.id;
-        console.log(id);
-        axios
-          .delete("http://localhost:3000/user", { data: { id: id } })
-          .then((response) => {
-            alert(response.data.result);
-            allUsers();
-          })
-          .catch(function (err) {
-            console.log(err);
+
+        const butDel = document.querySelectorAll(".remove_user_btn");
+        const butUpd = document.querySelectorAll(".update_user_btn");
+
+        butUpd.forEach((elem) => {
+          elem.addEventListener("click", function (e) {
+            let id = e.target.dataset.id;
+            let value = document.querySelector(".updEmail" + id).value;
+
+            axios
+              .put("http://localhost:3000/update", {
+                id: id,
+                newEmail: value,
+              })
+              .then((response) => {
+                alert(response.data.result);
+                allUsers();
+              })
+              .catch(function (err) {
+                console.log(err);
+              });
           });
-      });
+        });
+
+        butDel.forEach((elem) => {
+          elem.addEventListener("click", function (e) {
+            let id = e.target.dataset.id;
+            console.log(id);
+            axios
+              .delete("http://localhost:3000/updateUser", {
+                data: { id: id },
+              })
+              .then((response) => {
+                alert(response.data.result);
+                allUsers();
+              })
+              .catch(function (err) {
+                console.log(err);
+              });
+          });
+        });
+      }
     }
   }
 }
-adminPriv();

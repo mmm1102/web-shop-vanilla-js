@@ -6,7 +6,23 @@ let lego = {};
 let objArr = [];
 let objArr1 = {};
 let productsCart = {};
+let itemsPerPage = 4;
+let pageIndex = 0;
 let countItem = document.querySelector(".countItem");
+
+addEventListener("load",myFunction);
+
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+
 allToys();
 
 //Getting data from database
@@ -104,6 +120,7 @@ function renderCategory(data) {
       document.getElementById("ispis").innerHTML = html;
     }
   }
+
   //Render balls category
   let balls = document
     .getElementById("balls_cat")
@@ -169,11 +186,17 @@ function renderCategory(data) {
 }
 
 //Main function
+
+
 function renderToys(data) {
   toys = data;
   let html = ``;
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = pageIndex * itemsPerPage; i < pageIndex * itemsPerPage + itemsPerPage; i++) {
+    if (!data[i]) {
+      break;
+    }
+    
     html += `
   <div class="render_toys">
     
@@ -189,6 +212,7 @@ function renderToys(data) {
       html = "Nema rezultata";
     }
     document.getElementById("ispis").innerHTML = html;
+    loadPageNum(data);
   }
   console.log(toys);
 
@@ -214,6 +238,25 @@ function renderToys(data) {
   addToCartBtn.forEach((elem) => {
     elem.addEventListener("click", addToCart);
   });
+
+  function loadPageNum(data) {
+    const num = document.getElementById("pageNum");
+    num.innerHTML = "";
+
+    for (let i = 0; i < Math.ceil(data.length / itemsPerPage); i++) {
+      const paraf = document.createElement("p");
+      paraf.innerHTML = i + 1;
+
+      paraf.addEventListener("click", function (e) {
+        pageIndex = parseInt(e.target.textContent) - 1;
+        renderToys(data);
+      });
+      if (i == pageIndex) {
+        paraf.style.fontSize = "2rem";
+      }
+      num.append(paraf);
+    }
+  }
 
   function addToCart(toys) {
     let btn = this;
@@ -280,7 +323,6 @@ function renderToys(data) {
     updateTotal();
     counterCart();
   }
-
 
   //Total sum
   function updateTotal() {
