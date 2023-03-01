@@ -162,7 +162,7 @@ function adminPrivileges() {
             console.log(id);
 
             axios
-              .put("http://localhost:3000/updateToy", {
+              .post("http://localhost:3000/updateToy", {
                 id: id,
                 newName: value,
               })
@@ -264,7 +264,7 @@ function adminPrivileges() {
             let value = document.querySelector(".updEmail" + id).value;
 
             axios
-              .put("http://localhost:3000/update", {
+              .put("http://localhost:3000/updateUser", {
                 id: id,
                 newEmail: value,
               })
@@ -283,7 +283,7 @@ function adminPrivileges() {
             let id = e.target.dataset.id;
             console.log(id);
             axios
-              .delete("http://localhost:3000/updateUser", {
+              .delete("http://localhost:3000/user", {
                 data: { id: id },
               })
               .then((response) => {

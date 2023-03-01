@@ -10,12 +10,12 @@ let itemsPerPage = 4;
 let pageIndex = 0;
 let countItem = document.querySelector(".countItem");
 
-addEventListener("load",myFunction);
+addEventListener("load", myFunction);
 
-var myVar;
+let loader;
 
 function myFunction() {
-  myVar = setTimeout(showPage, 3000);
+  loader = setTimeout(showPage, 2000);
 }
 
 function showPage() {
@@ -72,6 +72,7 @@ function renderCategory(data) {
     });
 
   function renderFilter(data) {
+    
     cars = data;
     let html = ``;
 
@@ -91,8 +92,8 @@ function renderCategory(data) {
 
   //Render dolls category
   let dolls = document
-    .getElementById("dolls_cat")
-    .addEventListener("click", function () {
+    .getElementById("dolls_cat");
+    dolls.addEventListener("click", function () {
       axios
         .get("http://localhost:3000/dolls/")
         .then(function (response) {
@@ -101,6 +102,7 @@ function renderCategory(data) {
         .catch(function (err) {
           console.log(err);
         });
+        
     });
 
   function renderFilter(data) {
@@ -119,6 +121,7 @@ function renderCategory(data) {
     `;
       document.getElementById("ispis").innerHTML = html;
     }
+    
   }
 
   //Render balls category

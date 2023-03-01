@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-body,html {
+body {
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(255,178,158,1) 55%);
   font-family: 'Love Ya Like A Sister', cursive;

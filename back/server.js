@@ -58,11 +58,13 @@ app.get("/allToys", function (req, res) {
 });
 
 //Update toy info
-app.put("/updateToy", (req, res) => {
-  let id = req.body.id;
+app.post("/updateToy", (req, res) => {
+  // console.log(req.body.id);
+  // let id = req.body.id;
   let name = req.body.newName;
+ 
   konekcija.query(
-    "UPDATE TOY SET productName=? where id=?",
+    "UPDATE TOY SET productName=? where id=1",
     [name, id],
     function (err, result, field) {
       if (err) throw err;
